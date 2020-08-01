@@ -1,0 +1,13 @@
+<h2>Two ways data binding</h2>
+<label>
+  <input type="text" [value]="title" (input)="onInput($event)">
+</label>
+<p>{{title}}</p>
+<h2>Two ways data binding with forms module</h2>
+<label>
+  <input type="text" [(ngModel)]="formsModuleTitle" >
+</label>
+<p>{{formsModuleTitle}}</p>
+
+
+

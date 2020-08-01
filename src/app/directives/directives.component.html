@@ -1,0 +1,61 @@
+<h1>directives: </h1>
+<h2>Styles</h2>
+<div [ngStyle]="{
+
+  width: '200px',
+  height: '200px',
+  borderRadius: '100px',
+  border: '1px solid black',
+  backgroundColor: flagToToggle ? 'pink' : 'lightblue'
+
+}">
+</div>
+<button (click)="flagToToggle = !flagToToggle">Toggle</button>
+<hr>
+
+<h2>ngClass</h2>
+<h4>first sintaxis</h4>
+<p [ngClass]="{
+red: flagToToggle,
+blue: !flagToToggle
+}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, ullam.</p>
+<h4>secund sintaxis</h4>
+<p
+  [class.blue]="!flagToToggle"
+  [class.red]="flagToToggle"
+>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, rerum?</p>
+<hr>
+
+<h2>*ngIf</h2>
+<button (click)="toggle = !toggle">Switch</button>
+<p *ngIf="toggle" class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, aut.</p>
+<p *ngIf="!toggle" class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, reprehenderit.</p>
+
+<h2>*ngIf else</h2>
+<p *ngIf="toggle; else blueParagraph" class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, aut.</p>
+<ng-template #blueParagraph>
+  <p class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, reprehenderit.</p>
+</ng-template>
+
+<h2>*ngSwitch</h2>
+<button (click)="ngSwitchToggle = !ngSwitchToggle">Toggle</button>
+<div [ngSwitch]="ngSwitchToggle" >
+  <p  *ngSwitchCase="true" class="red">Lorem ipsum dolor sit amet.</p>
+  <p  *ngSwitchCase="false" class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, temporibus!</p>
+  <p  *ngSwitchDefault>No content. Sorry:)!</p>
+</div>
+
+<h2>*ngFor</h2>
+<h4>first exemple</h4>
+<ul>
+  <li *ngFor="let value of forNgFor; let i = index">{{i + 1+'. '}}{{value}}</li>
+</ul>
+<br>
+<h4>second exemple</h4>
+<ul>
+  <li *ngFor="let post of objs">{{post.title+'. '}}{{'Author: '+post.author}}
+    <ul>
+      <li *ngFor="let comment of post.comments">{{comment.name+': '}}{{comment.text}}</li>
+    </ul>
+  </li>
+</ul>
